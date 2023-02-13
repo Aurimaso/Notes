@@ -1,7 +1,6 @@
 body {
   display: flex;
   justify-content: center;
-  /* margin: auto; */
   align-items: center;
   min-height: 700px;
 }
@@ -22,7 +21,6 @@ body {
   align-items: center;
 }
 #signin {
-  /* margin-left: 60px; */
   background-color: #0161ce;
   border-radius: 15px;
   min-width: 100px;

@@ -37,7 +37,7 @@ async function registerForm(e) {
           .then((res) => res.json())
           .then((data) => {
             console.log(data);
-            location.href = "/front_end_baigiamasis/login/login.html";
+            location.href = "/login/login.html";
           })
           .catch((error) => console.log(error));
         break;
@@ -48,28 +48,3 @@ async function registerForm(e) {
     }
   }
 }
-
-// function forLooper() {
-//   for (i = 0; i < Object.keys(peopleArray).length; i++) {
-//     console.log(i);
-//     if (peopleArray[i].Email === emailEl.value) {
-//       return true;
-//     }
-//   }
-//   if (forLooper() === true) {
-//     alert("User with this email already exists.");
-//   } else {
-//     console.log("1");
-//     fetch("https://testapi.io/api/Aurimaso/resource/userInformation", {
-//       method: "POST",
-//       headers: { "Content-type": "application/json" },
-//       body: JSON.stringify(post),
-//     })
-//       .then((res) => res.json())
-//       .then((data) => {
-//         console.log(data);
-//         location.href = "/front_end_baigiamasis/login/login.html";
-//       })
-//       .catch((error) => console.log(error));
-//   }
-// }

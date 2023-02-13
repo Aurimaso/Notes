@@ -54,6 +54,15 @@ td {
   white-space: normal;
 }
 
+table {
+  border: 1px solid black;
+  padding: 5px;
+  height: 200px;
+  width: fit-content;
+  border-radius: 5px;
+  background-color: #5996e3;
+}
+
 .createPostForm {
   border: 1px solid;
   width: 750px;
@@ -65,8 +74,7 @@ td {
 }
 
 h2 {
-  font-family: Copperplate, Papyrus, fantasy;
-  border-style: groove;
+  font-family: Arial, Helvetica, sans-serif;
   width: max-content;
   padding: 15px;
   margin: 20px;
@@ -96,4 +104,42 @@ div {
   height: 30px;
   border: solid 2px;
   border-radius: 8px;
+}
+
+.titleClass {
+  width: 170px;
+  height: 50px;
+  display: block;
+  overflow: auto;
+  white-space: nowrap;
+  border-radius: 5px;
+  background-color: white;
+}
+
+.contentClass {
+  display: inline-block;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  white-space: "normal";
+  width: 450px;
+  height: 120px;
+  border-radius: 5px;
+  background-color: white;
+}
+
+.updatedClass {
+  width: 80px;
+  border-radius: 5px;
+  background-color: white;
+}
+
+.dateClass {
+  width: 80px;
+  border-radius: 5px;
+  background-color: white;
+}
+
+.editDeleteButton {
+  width: 60px;
+  border-radius: 5px;
 }

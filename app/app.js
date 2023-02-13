@@ -4,7 +4,7 @@ displayName.textContent = `Hello, ${localStorage.getItem(
 )} ${localStorage.getItem("surname")}`;
 
 document.querySelector(".logOut").addEventListener("click", () => {
-  location.href = "/front_end_baigiamasis/index.html";
+  location.href = "/index.html";
 });
 
 // Get the modal
@@ -23,7 +23,6 @@ function submitForm(e) {
   const content = e.target.elements.content.value;
   const date = e.target.elements.endDate.value;
   const email = localStorage.getItem("email");
-  console.log(email);
 
   const post = {
     Type: type,
@@ -32,7 +31,6 @@ function submitForm(e) {
     Email: email,
   };
 
-  console.log("1");
   fetch("https://testapi.io/api/Aurimaso/resource/toDoList", {
     method: "POST",
     headers: { "Content-type": "application/json" },
@@ -64,12 +62,6 @@ function createPostsHTML(data) {
   data.forEach((post) => {
     const containerEl = document.createElement("table");
     containerEl.id = "post_id_" + post.id;
-    containerEl.style.border = "1px solid black";
-    containerEl.style.padding = "5px";
-    containerEl.style.height = "200px";
-    containerEl.style.width = "fit-content";
-    containerEl.style.borderRadius = "5px";
-    containerEl.style.backgroundColor = "#5996e3";
 
     const typeLabel = document.createElement("p");
     typeLabel.textContent = "Type";
@@ -84,16 +76,8 @@ function createPostsHTML(data) {
     endDateLabel.textContent = "End date";
 
     const typeEl = document.createElement("td");
-    typeEl.className = ".titleClass";
-    typeEl.style.width = "170px";
-    typeEl.style.height = "50px";
-    typeEl.style.display = "block";
-    typeEl.style.overflow = "auto";
-    typeEl.style.whiteSpace = "nowrap";
-    typeEl.style.borderRadius = "5px";
-    typeEl.style.backgroundColor = "white";
+    typeEl.className = "titleClass";
     typeEl.textContent = post.Type;
-    // containerEl.append(typeEl);
 
     const typeDivEl = document.createElement("div");
     typeDivEl.append(typeLabel);
@@ -102,16 +86,7 @@ function createPostsHTML(data) {
 
     const contentEl = document.createElement("td");
     contentEl.className = "contentClass";
-    contentEl.style.display = "inline-block";
-    contentEl.style.overflowX = "hidden";
-    contentEl.style.overflowY = "scroll";
-    contentEl.style.whiteSpace = "normal";
-    contentEl.style.width = "450px";
-    contentEl.style.height = "120px";
-    contentEl.style.borderRadius = "5px";
-    contentEl.style.backgroundColor = "white";
     contentEl.textContent = post.Content;
-    // containerEl.append(contentEl);
 
     const contentDivEl = document.createElement("div");
     contentDivEl.append(contentLabel);
@@ -120,9 +95,6 @@ function createPostsHTML(data) {
 
     const updatedEl = document.createElement("td");
     updatedEl.className = "updatedClass";
-    updatedEl.style.width = "80px";
-    updatedEl.style.borderRadius = "5px";
-    updatedEl.style.backgroundColor = "white";
     updatedEl.textContent = post.updatedAt.slice(0, 10);
     containerEl.append(updatedEl);
 
@@ -133,9 +105,6 @@ function createPostsHTML(data) {
 
     const dateEl = document.createElement("td");
     dateEl.className = "dateClass";
-    dateEl.style.width = "80px";
-    dateEl.style.borderRadius = "5px";
-    dateEl.style.backgroundColor = "white";
     dateEl.textContent = post.endDate;
     containerEl.append(dateEl);
 
@@ -147,24 +116,14 @@ function createPostsHTML(data) {
     const editButtonEl = document.createElement("button");
     editButtonEl.className = "editDeleteButton";
     editButtonEl.addEventListener("click", openEditModal);
-    // editButtonEl.style.marginBottom = "5px";
-    editButtonEl.style.width = "60px";
-    editButtonEl.style.borderRadius = "5px";
     editButtonEl.textContent = "Edit";
     containerEl.append(editButtonEl);
 
     const deleteButtonEl = document.createElement("button");
     deleteButtonEl.className = "editDeleteButton";
     deleteButtonEl.addEventListener("click", deletePost);
-    deleteButtonEl.style.borderRadius = "5px";
-    deleteButtonEl.style.width = "60px";
     deleteButtonEl.textContent = "Delete";
     containerEl.append(deleteButtonEl);
-
-    // const buttonsDivEl = document.createElement("div");
-    // buttonsDivEl.append(editButtonEl);
-    // buttonsDivEl.append(deleteButtonEl);
-    // containerEl.append(buttonsDivEl);
 
     document.querySelector(".posts").append(containerEl);
   });
@@ -178,13 +137,10 @@ function openEditModal(e) {
   const typeValue = document.querySelector(
     `#${e.target.parentElement.id} td`
   ).textContent;
-  console.log(typeValue);
 
   const contentValue = document.querySelector(
     `#${e.target.parentElement.id} .contentClass`
   ).textContent;
-
-  console.log(contentValue);
 
   const dateValue = document.querySelector(
     `#${e.target.parentElement.id} .updatedClass`

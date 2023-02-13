@@ -1,13 +1,11 @@
 body {
   display: flex;
   justify-content: center;
-  /* margin: auto; */
   align-items: center;
   min-height: 700px;
 }
 
 form {
-  /* height: 200px; */
   width: 400px;
   margin-top: 50px;
   margin-bottom: 50px;
