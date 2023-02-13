@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="app.css" />
+    <script src="app.js" defer></script>
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="logOutButton">
+      <h2>Add New Post</h2>
+      <button class="logOut">Log out</button>
+    </div>
+    <form class="createPostForm" action="">
+      <label for="type">Type</label><br />
+      <input type="type" id="type" name="type" /><br />
+      <label for="content">Content</label><br />
+      <input type="text" id="content" name="content" /><br />
+      <label for="endDate">End date</label><br />
+      <input type="date" id="endDate" name="endDate" /><br />
+      <input type="submit" value="Add Post" />
+    </form>
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+      <!-- Modal content -->
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <form class="editPostForm" action="">
+          <label for="id">Id</label><br />
+          <input type="text" id="id" name="id" disabled /><br />
+          <label for="type">Type</label><br />
+          <input type="text" id="type" name="type" /><br />
+          <label for="content">Content</label><br />
+          <input type="text" id="content" name="content" /><br />
+          <label for="endDate">End date</label><br />
+          <input type="date" id="endDate" name="endDate" /><br />
+          <input type="submit" value="Save Post" />
+        </form>
+      </div>
+    </div>
+    <div class="posts"></div>
+  </body>
+</html>

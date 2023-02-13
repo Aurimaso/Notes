@@ -1,0 +1,33 @@
+body {
+  display: flex;
+  justify-content: center;
+  /* margin: auto; */
+  align-items: center;
+  min-height: 700px;
+}
+
+form {
+  /* height: 200px; */
+  width: 400px;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  margin-right: 50px;
+  margin-left: 50px;
+  background-color: #5996e3;
+  border-radius: 15px;
+  border-style: double;
+  padding: 20px;
+}
+
+label {
+  margin: 20px;
+  font-family: "Lucida Console", "Courier New", monospace;
+}
+
+input {
+  margin-left: 20px;
+  border-radius: 5px;
+  border: solid;
+  border-width: 2px;
+  margin-top: 4px;
+}
