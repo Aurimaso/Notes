@@ -60,14 +60,24 @@ function getPosts() {
 
 function createPostsHTML(data) {
   data.forEach((post) => {
-    const containerEl = document.createElement("table");
-    containerEl.id = "post_id_" + post.id;
+    const maincontainer = document.createElement("div");
+    maincontainer.className = "maincontainer";
+    maincontainer.id = "post_id_" + post.id;
 
-    const typeLabel = document.createElement("p");
-    typeLabel.textContent = "Type";
+    const cardEl = document.createElement("div");
+    cardEl.className = "thecard";
 
-    const contentLabel = document.createElement("p");
-    contentLabel.textContent = "Content";
+    const frontCard = document.createElement("div");
+    frontCard.className = "thefront";
+
+    const backCard = document.createElement("div");
+    backCard.id = "post_id_" + post.id;
+    backCard.className = "theback";
+
+    cardEl.append(frontCard);
+    cardEl.append(backCard);
+
+    maincontainer.append(cardEl);
 
     const updateDateLabel = document.createElement("p");
     updateDateLabel.textContent = "Update date";
@@ -80,52 +90,48 @@ function createPostsHTML(data) {
     typeEl.textContent = post.Type;
 
     const typeDivEl = document.createElement("div");
-    typeDivEl.append(typeLabel);
     typeDivEl.append(typeEl);
-    containerEl.append(typeDivEl);
+    frontCard.append(typeDivEl);
 
     const contentEl = document.createElement("td");
     contentEl.className = "contentClass";
     contentEl.textContent = post.Content;
 
     const contentDivEl = document.createElement("div");
-    contentDivEl.append(contentLabel);
     contentDivEl.append(contentEl);
-    containerEl.append(contentDivEl);
+    backCard.append(contentDivEl);
 
     const updatedEl = document.createElement("td");
     updatedEl.className = "updatedClass";
     updatedEl.textContent = post.updatedAt.slice(0, 10);
-    containerEl.append(updatedEl);
-
-    const updateDateDivEl = document.createElement("div");
-    updateDateDivEl.append(updateDateLabel);
-    updateDateDivEl.append(updatedEl);
-    containerEl.append(updateDateDivEl);
 
     const dateEl = document.createElement("td");
     dateEl.className = "dateClass";
     dateEl.textContent = post.endDate;
-    containerEl.append(dateEl);
 
     const dateDivEl = document.createElement("div");
+    dateDivEl.style.display = "inline-flex";
     dateDivEl.append(endDateLabel);
     dateDivEl.append(dateEl);
-    containerEl.append(dateDivEl);
+    dateDivEl.append(updateDateLabel);
+    dateDivEl.append(updatedEl);
+    backCard.append(dateDivEl);
 
     const editButtonEl = document.createElement("button");
+    editButtonEl.style.display = "inline-block";
     editButtonEl.className = "editDeleteButton";
     editButtonEl.addEventListener("click", openEditModal);
     editButtonEl.textContent = "Edit";
-    containerEl.append(editButtonEl);
+    backCard.append(editButtonEl);
 
     const deleteButtonEl = document.createElement("button");
+    deleteButtonEl.style.display = "inline-block";
     deleteButtonEl.className = "editDeleteButton";
     deleteButtonEl.addEventListener("click", deletePost);
     deleteButtonEl.textContent = "Delete";
-    containerEl.append(deleteButtonEl);
+    backCard.append(deleteButtonEl);
 
-    document.querySelector(".posts").append(containerEl);
+    document.querySelector(".posts").append(maincontainer);
   });
 }
 
@@ -201,7 +207,7 @@ function submitEditForm(e) {
     .then((data) => {
       console.log(data);
       modal.style.display = "none";
-      location.href = "/front_end_baigiamasis/app/app.html";
+      location.href = "/app/app.html";
     })
     .catch((error) => console.log(error));
 }
@@ -217,3 +223,61 @@ window.onclick = function (event) {
     modal.style.display = "none";
   }
 };
+
+const coords = { x: 0, y: 0 };
+const circles = document.querySelectorAll(".circle");
+
+const cursor = document.querySelector(".cursor");
+
+circles.forEach(function (circle, index) {
+  circle.x = 0;
+  circle.y = 0;
+  circle.style.backgroundColor = "white";
+});
+
+window.addEventListener("mousemove", function (e) {
+  coords.x = e.clientX;
+  coords.y = e.clientY;
+});
+
+function animateCircles() {
+  let x = coords.x;
+  let y = coords.y;
+
+  cursor.style.top = x;
+  cursor.style.left = y;
+
+  const colors = [
+    "#e66465",
+    "#e86475",
+    "#e76584",
+    "#e56893",
+    "#e06da2",
+    "#da72b0",
+    "#d178bd",
+    "#c77fc8",
+    "#bb85d2",
+    "#ae8cda",
+    "#a092e0",
+    "#9198e5",
+  ];
+
+  circles.forEach(function (circle, index) {
+    circle.style.left = x - 12 + "px";
+    circle.style.top = y - 12 + "px";
+
+    circle.style.scale = (circles.length - index) / circles.length;
+    circle.style.backgroundColor = colors[index % colors.length];
+
+    circle.x = x;
+    circle.y = y;
+
+    const nextCircle = circles[index + 1] || circles[0];
+    x += (nextCircle.x - x) * 0.3;
+    y += (nextCircle.y - y) * 0.3;
+  });
+
+  requestAnimationFrame(animateCircles);
+}
+
+animateCircles();

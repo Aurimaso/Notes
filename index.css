@@ -11,9 +11,9 @@ body {
   margin-bottom: 50px;
   margin-right: 50px;
   margin-left: 50px;
-  background-color: #5996e3;
+  background-image: linear-gradient(#e66465, #9198e5);
   border-radius: 15px;
-  border-style: double;
+  border-style: outset;
 }
 #button {
   margin: 85px;
@@ -21,13 +21,15 @@ body {
   align-items: center;
 }
 #signin {
-  background-color: #0161ce;
+  background-color: #000000;
   border-radius: 15px;
   min-width: 100px;
+  color: white;
 }
 #regin {
   margin-left: 10px;
-  background-color: #0161ce;
+  background-color: #000000;
+  color: white;
   border-radius: 15px;
   min-width: 100px;
 }

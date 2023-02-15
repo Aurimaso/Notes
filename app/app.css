@@ -1,7 +1,8 @@
-/* The Modal (background) */
 body {
-  max-width: 500px;
-  /* margin: auto; */
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  height: 100vh;
 }
 
 .modal {
@@ -52,25 +53,34 @@ td {
   display: flex;
   align-items: center;
   white-space: normal;
+  margin: 10px;
 }
 
 table {
   border: 1px solid black;
   padding: 5px;
-  height: 200px;
-  width: fit-content;
-  border-radius: 5px;
-  background-color: #5996e3;
+  height: fit-content;
+  width: 400px;
+  background-color: #9198e5;
+  border-radius: 15px;
+  border-style: outset;
 }
 
 .createPostForm {
   border: 1px solid;
+  border-radius: 10px;
   width: 750px;
   height: 50px;
   display: flex;
   align-items: center;
   justify-content: center;
   margin: 20px;
+  background-image: linear-gradient(#e66465, #9198e5);
+}
+
+.formdiv {
+  display: flex;
+  justify-content: center;
 }
 
 h2 {
@@ -90,30 +100,33 @@ h2 {
 div {
   align-content: center;
   display: inline-block;
-  margin: 20px;
 }
 
 .logOutButton {
   display: flex;
   justify-content: space-between;
-  width: 1000px;
 }
 
 .logOut {
+  background-color: #000000;
+  border-radius: 15px;
+  min-width: 100px;
   margin: 20px;
   height: 30px;
-  border: solid 2px;
-  border-radius: 8px;
+  color: white;
 }
 
 .titleClass {
   width: 170px;
-  height: 50px;
   display: block;
   overflow: auto;
   white-space: nowrap;
   border-radius: 5px;
-  background-color: white;
+  border: none;
+  font-weight: bold;
+  font-size: 50px;
+  display: flex;
+  justify-content: center;
 }
 
 .contentClass {
@@ -121,25 +134,120 @@ div {
   overflow-x: hidden;
   overflow-y: scroll;
   white-space: "normal";
-  width: 450px;
+  width: 260px;
   height: 120px;
   border-radius: 5px;
   background-color: white;
+  opacity: 0.7;
 }
 
 .updatedClass {
   width: 80px;
   border-radius: 5px;
   background-color: white;
+  opacity: 0.7;
 }
 
 .dateClass {
   width: 80px;
   border-radius: 5px;
   background-color: white;
+  opacity: 0.7;
 }
 
 .editDeleteButton {
-  width: 60px;
-  border-radius: 5px;
+  background-color: #000000;
+  border-radius: 15px;
+  min-width: 100px;
+  margin: 5px;
+  height: 30px;
+  color: white;
+}
+
+.addpostbtn {
+  background-color: #000000;
+  border-radius: 15px;
+  min-width: 100px;
+  margin: 20px;
+  height: 30px;
+  color: white;
+}
+
+.maincontainer {
+  width: 300px;
+  height: 320px;
+  background: none;
+  top: 50%;
+  left: 50%;
+  padding: 20px;
+}
+
+.thecard {
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  transform-style: preserve-3d;
+  transition: all 0.8s ease;
+}
+
+.thecard:hover {
+  transform: rotateY(180deg);
+}
+
+.thefront {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  backface-visibility: hidden;
+  overflow: hidden;
+  background: #ffc728;
+  color: #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.theback {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  backface-visibility: hidden;
+  overflow: hidden;
+  background: #fafafa;
+  color: #333;
+  text-align: center;
+  transform: rotateY(180deg);
+}
+
+.posts {
+  display: inline-flex;
+}
+
+.cursor {
+  pointer-events: none;
+  position: fixed;
+  display: block;
+  border-radius: 0;
+  mix-blend-mode: difference;
+  top: 0;
+  left: 0;
+  z-index: 9999999999999999;
+}
+
+.circle {
+  position: absolute;
+  display: block;
+  width: 26px;
+  height: 26px;
+  border-radius: 20px;
+  background-color: #fff;
 }
